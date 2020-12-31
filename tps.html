@@ -7,12 +7,19 @@
     <title>Document</title>
     <link rel="stylesheet" href="tps_style.css">
     <script type="text/javascript" src="tps_script.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <nav class="navbar">
+        <h1>Apna Time-Table</h1>
+
+    </nav>
+
     <div class="ttl">
         <h1 class="titl">
-            Enter Work to do
+            Make Your Schedule
         </h1>
     </div>
 
@@ -25,12 +32,30 @@
         <label class="write" for="time">Enter Time</label>
         <input class="inp tm" id="time" type="text" name="time">
         <br><br>
-        <label class="write" for="sub">Enter subject</label>
+        <label class="write" for="sub">Enter Subject</label>
         <input class="inp tm" id="sub" name="sub"></input>
         <br><br>
-        <label class="write" for="day">Enter day</label>
-        <input class="inp tm" id="day" name="day"></input>
-        <div class="btnr"> <a class="btn" href="tps.html" onclick="passval();">check</a> </div>
+        <div class="days">
+            <label class="write" for="day">Enter Day</label>
+            <br>
+            <input type="checkbox" name="day" id="mon">Monday
+            
+            <input type="checkbox" name="day" id="tue">Tuesday
+            <br>
+            <input type="checkbox" name="day" id="wed">Wednesday
+            
+            <input type="checkbox" name="day" id="thu">Thursday
+            <br>
+            <input type="checkbox" name="day" id="fri">Friday
+            
+            <input type="checkbox" name="day" id="sat">Saturday
+            <br>
+            <input type="checkbox" name="day" id="sun">Sunday
+            
+        </div>
+
+        <br>
+        <div class="btnr"> <a class="btn" href="#" onclick="ref_event();">check</a> </div>
         <div class="btnr"> <a class="btn" id="add" onclick="update();">add</a> </div>
         <div class="btnr"> <a class="btn" href="data.html" onclick="cleared();">clear</a> </div>
         </form>
@@ -40,30 +65,30 @@
     <div class="table">
         <table class="tbl">
             <thead>
-                <th class="head">index</th>
-                <th class="head">time</th>
-                <th class="head">mon</th>
-                <th class="head">tue</th>
-                <th class="head">wed</th>
-                <th class="head">thu</th>
-                <th class="head">fri</th>
-                <th class="head">sat</th>
-                <th class="head">sun</th>
-                <th class="head">delete</t>
+                <th class="head">Index</th>
+                <th class="head">Time</th>
+                <th class="head">Mon</th>
+                <th class="head">Tue</th>
+                <th class="head">Wed</th>
+                <th class="head">Thu</th>
+                <th class="head">Fri</th>
+                <th class="head">Sat</th>
+                <th class="head">Sun</th>
+                <th class="head">Delete</t>
             </thead>
             <tbody id="tableBody">
-                
-                    <td class="dt" data-lable="index">0</td>
-                    <td class="dt" data-lable="time">5:00 PM</td>
-                    <td class="dt" data-lable="mon"> A.T.</td>
-                    <td class="dt" data-lable="tue"> A.T.</td>
-                    <td class="dt" data-lable="wed"> A.T.</td>
-                    <td class="dt" data-lable="thu"> A.T.</td>
-                    <td class="dt" data-lable="fri"> A.T.</td>
-                    <td class="dt" data-lable="sat"> A.T.</td>
-                    <td class="dt" data-lable="sun"> A.T.</td>
-                    <td class="dt dlt" data-lable="delete"><a  href="#" class="btntp">delete</a></td>
-                
+
+                <td class="dt" data-lable="index">-</td>
+                <td class="dt" data-lable="time">5:00 PM</td>
+                <td class="dt" data-lable="mon"> A.T.</td>
+                <td class="dt" data-lable="tue"> A.T.</td>
+                <td class="dt" data-lable="wed"> A.T.</td>
+                <td class="dt" data-lable="thu"> A.T.</td>
+                <td class="dt" data-lable="fri"> A.T.</td>
+                <td class="dt" data-lable="sat"> A.T.</td>
+                <td class="dt" data-lable="sun"> A.T.</td>
+                <td class="dt dlt" data-lable="delete" ><a class="btntp">Delete</a></td>
+
             </tbody>
         </table>
     </div>
