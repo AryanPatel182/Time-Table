@@ -27,6 +27,31 @@ function updatelite() {
 
     tableBody.innerHTML = str;
 }
+function updatelite_view() {
+    let tableBody = document.getElementById("tableBody");
+    itemJsonArraystr = localStorage.getItem('itemsJson');
+    itemJsonArray = JSON.parse(itemJsonArraystr);
+    let str = "";
+    // console.log(itemJsonArray);
+
+    itemJsonArray.forEach((element) => {
+        str += `<tr>
+<td class="dt" data-lable="index">${element['index']}</td>
+<td class="dt" data-lable="time">${element['time']}</td>
+<td class="dt" data-lable="mon">${element['mon']}</td>
+<td class="dt" data-lable="tue"> ${element['tue']}</td>
+<td class="dt" data-lable="wed"> ${element['wed']}</td>
+<td class="dt" data-lable="thu"> ${element['thu']}</td>
+<td class="dt" data-lable="fri"> ${element['fri']}</td>
+<td class="dt" data-lable="sat"> ${element['sat']}</td>
+<td class="dt" data-lable="sun"> ${element['sun']}</td>
+
+</tr>`
+
+    });
+
+    tableBody.innerHTML = str;
+}
 
 
 function update() {
@@ -51,7 +76,7 @@ function update() {
         console.log(tps);
         tps.index = index;
         tps.time = time;
-        for(i=0;i<6;i++){
+        for(i=0;i<7;i++){
             if(tps_array[i]){
                 tps[tps_name[i]] = sub;
             }
@@ -67,7 +92,7 @@ function update() {
         console.log(itemJsonArray);
         tps = { 'index': '', 'time': '', 'mon': '', 'tue': '', 'wed': '', 'thu': '', 'fri': '', 'sat': '', 'sun': '' }
         tps.time = time;
-        for(i=0;i<6;i++){
+        for(i=0;i<7;i++){
             if(tps_array[i]){
                 tps[tps_name[i]] = sub;
             }
@@ -119,8 +144,13 @@ function ref_event() {
     }
     
     // console.log(itemJsonArray);
-    
-    
+   
+}
+
+function cleared(){
+    localStorage.removeItem('itemsJson');
+    index=0;
+    updatelite();
 }
 
 function sort_index() {
