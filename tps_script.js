@@ -54,9 +54,18 @@ function updatelite_view() {
 }
 
 
-function update() {
+function update()
+{
     index = index + 1;
-    let time = document.getElementById('time').value;
+    let start_time_hour = document.getElementById('time_box_start_hour').value;
+    let start_time_min = document.getElementById('time_box_start_min').value;
+    let start_am_pm = document.getElementById('am_pm_start').value;
+    let end_am_pm = document.getElementById('am_pm_end').value;
+    let end_time_hour = document.getElementById('time_box_end_hour').value;
+    let end_time_min = document.getElementById('time_box_end_min').value;
+
+    let time = start_time_hour + ":" + start_time_min + " " + start_am_pm + " to " + end_time_hour + ":" + end_time_min + " " + end_am_pm;
+    // let time = document.getElementById('time').value;
     let sub = document.getElementById('sub').value;
     let mon = document.getElementById('mon').checked;
     let tue = document.getElementById('tue').checked;
@@ -66,18 +75,18 @@ function update() {
     let sat = document.getElementById('sat').checked;
     let sun = document.getElementById('sun').checked;
 
-    let tps_array =[mon,tue,wed,thu,fri,sat,sun];
-    let tps_name =['mon','tue','wed','thu','fri','sat','sun'];
+    let tps_array = [mon, tue, wed, thu, fri, sat, sun];
+    let tps_name = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
     console.log(tps_array)
     // console.log(mon)
     if (localStorage.getItem('itemsJson') == null) {
         itemJsonArray = [];
         tps = { 'index': '', 'time': '', 'mon': '', 'tue': '', 'wed': '', 'thu': '', 'fri': '', 'sat': '', 'sun': '' }
-        console.log(tps);
+        // console.log(tps);
         tps.index = index;
         tps.time = time;
-        for(i=0;i<7;i++){
-            if(tps_array[i]){
+        for (i = 0; i < 7; i++) {
+            if (tps_array[i]) {
                 tps[tps_name[i]] = sub;
             }
         }
@@ -87,18 +96,33 @@ function update() {
         localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray));
     }
     else {
+        let kk = 0
         itemJsonArraystr = localStorage.getItem('itemsJson');
         itemJsonArray = JSON.parse(itemJsonArraystr);
-        console.log(itemJsonArray);
-        tps = { 'index': '', 'time': '', 'mon': '', 'tue': '', 'wed': '', 'thu': '', 'fri': '', 'sat': '', 'sun': '' }
-        tps.time = time;
-        for(i=0;i<7;i++){
-            if(tps_array[i]){
-                tps[tps_name[i]] = sub;
+        console.log("update", itemJsonArray);
+        tps = { 'index': '', 'time': '', 'mon': '', 'tue': '', 'wed': '', 'thu': '', 'fri': '', 'sat': '', 'sun': '' };
+        itemJsonArray.forEach(value => {
+            if (value.time == time) {
+                kk = kk + 1;
+                index = index - 1;
+                for (i = 0; i < 7; i++) {
+                    if (tps_array[i]) {
+                        value[tps_name[i]] = sub;
+                    }
+                }
             }
+        })
+
+        if (kk == 0) {
+            for (i = 0; i < 7; i++) {
+                if (tps_array[i]) {
+                    tps[tps_name[i]] = sub;
+                }
+            }
+            tps.time = time;
+            tps.index = index;
+            itemJsonArray.push(tps);
         }
-        tps.index = index;
-        itemJsonArray.push(tps);
         localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray));
     }
 
@@ -125,31 +149,32 @@ function update() {
     tableBody.innerHTML = str;
 };
 
+
+
 function ref_event() {
     var i = 1;
     itemJsonArraystr = localStorage.getItem('itemsJson');
     itemJsonArray = JSON.parse(itemJsonArraystr);
-    console.log(itemJsonArray==null)
-    if(itemJsonArray==null)
-    {
-        index=0;
+    // console.log(itemJsonArray==null)
+    if (itemJsonArray == null) {
+        index = 0;
     }
-    else{
+    else {
         itemJsonArray.forEach((element) => {
             element['index'] = i;
             i += 1;
         })
         localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray));
-        index = i-1;
+        index = i - 1;
     }
-    
+
     // console.log(itemJsonArray);
-   
+
 }
 
-function cleared(){
+function cleared() {
     localStorage.removeItem('itemsJson');
-    index=0;
+    index = 0;
     updatelite();
 }
 

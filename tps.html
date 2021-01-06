@@ -26,38 +26,57 @@
     <div class="title">
     </div>
     <div class="form">
-        <form action="data-javascript-LocalStorage.htm"></form>
-        <img class="img" src="https://source.unsplash.com/collection/190727/1600x900/?code" alt="">
-        <br>
-        <label class="write" for="time">Enter Time</label>
-        <input class="inp tm" id="time" type="text" name="time">
-        <br><br>
-        <label class="write" for="sub">Enter Subject</label>
-        <input class="inp tm" id="sub" name="sub"></input>
-        <br><br>
-        <div class="days">
-            <label class="write" for="day">Enter Day</label>
+        <form action="data-javascript-LocalStorage.htm">
+            <img class="img" src="https://source.unsplash.com/collection/190727/1600x900/?code" alt="">
             <br>
-            <input type="checkbox" name="day" id="mon">Monday
-            
-            <input type="checkbox" name="day" id="tue">Tuesday
-            <br>
-            <input type="checkbox" name="day" id="wed">Wednesday
-            
-            <input type="checkbox" name="day" id="thu">Thursday
-            <br>
-            <input type="checkbox" name="day" id="fri">Friday
-            
-            <input type="checkbox" name="day" id="sat">Saturday
-            <br>
-            <input type="checkbox" name="day" id="sun">Sunday
-            
-        </div>
+            <div class="">
+                <label for="time">Enter Time</label>
+                <br><br>Start :
+                <input type="string" class="time_box" id="time_box_start_hour" name="start_hour" placeholder="12"> :
+                <input type="string" class="time_box" id="time_box_start_min" name="start_min" placeholder="00">
+                <select name="am_pm_start" id="am_pm_start">
+                    <option value="am" selected>AM</option>
+                    <option value="pm">PM</option>
+                </select>
+                <br><br> End
+                <input type="string" class="time_box" id="time_box_end_hour" name="end_hour" placeholder="12"> :
+                <input type="string" class="time_box" id="time_box_end_min" name="end_min" placeholder="00">
+                <select name="am_pm_end" id="am_pm_end">
+                    <option value="am" selected>AM</option>
+                    <option value="pm">PM</option>
+                </select>
 
-        <br>
-        <div class="btnr"> <a class="btn" href="view.html" onclick="ref_event();">check</a> </div>
-        <div class="btnr"> <a class="btn" id="add" onclick="update();">add</a> </div>
-        <div class="btnr"> <a class="btn" href="" onclick="cleared();">clear</a> </div>
+
+            </div>
+            <!-- <label class="write" for="time">Enter Time</label>
+            <input class="inp tm" id="time" type="text" name="time"> -->
+            <br><br>
+            <label class="write" for="sub">Enter Subject</label>
+            <input class="inp tm" id="sub" name="sub"></input>
+            <br><br>
+            <div class="days">
+                <label class="write" for="day">Enter Day</label>
+                <br>
+                <input type="checkbox" name="day" id="mon">Monday
+
+                <input type="checkbox" name="day" id="tue">Tuesday
+                <br>
+                <input type="checkbox" name="day" id="wed">Wednesday
+
+                <input type="checkbox" name="day" id="thu">Thursday
+                <br>
+                <input type="checkbox" name="day" id="fri">Friday
+
+                <input type="checkbox" name="day" id="sat">Saturday
+                <br>
+                <input type="checkbox" name="day" id="sun">Sunday
+
+            </div>
+
+            <br>
+            <div class="btnr"> <a class="btn" href="view.html" onclick="ref_event();">check</a> </div>
+            <div class="btnr"> <a class="btn" id="add" onclick="update();">add</a> </div>
+            <div class="btnr"> <a class="btn" href="" onclick="cleared();">clear</a> </div>
         </form>
     </div>
 
@@ -87,7 +106,7 @@
                 <td class="dt" data-lable="fri"> A.T.</td>
                 <td class="dt" data-lable="sat"> A.T.</td>
                 <td class="dt" data-lable="sun"> A.T.</td>
-                <td class="dt dlt" data-lable="delete" ><a class="btntp">Delete</a></td>
+                <td class="dt dlt" data-lable="delete"><a class="btntp">Delete</a></td>
 
             </tbody>
         </table>
